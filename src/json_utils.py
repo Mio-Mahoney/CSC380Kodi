@@ -48,6 +48,14 @@ def update_current_config(config_name):
     current_config_file = open(current_config_file_path, "r+")
     current_config_data = json.load(current_config_file)
 
+# This function will obtain the names of all of the user profiles from our UserData json files
+def get_profile_names():
+    global profiles_data
+    names = []
+    for item in profiles_data:
+        names.append(item["name"])
+    return names
+
 
 
 
@@ -55,14 +63,6 @@ def update_current_config(config_name):
 # -----------------------------------------------------------------------------------------------------
 # Unfinished Functions
 # -----------------------------------------------------------------------------------------------------
-
-# This function will read the files in UserData and put it in the user configuration data arrays
-def read_current_configuration():
-    pass
-
-# This function will obtain the names of all of the user profiles from our UserData json files
-def get_profile_names():
-    return ["Harley", "Mio", "Will"]
 
 # This function will save a user's profile to our UserData json files
 def add_profile(profile_name):
