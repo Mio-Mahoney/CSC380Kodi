@@ -14,6 +14,7 @@ genre_choice = []
 watched_unwatched_choice = []
 length_choice = []
 rating_choice = []
+mood_choice = []
 
 # Displays main page where the user can choose to randomly select, configure, or choose profile
 def display_random_button():
@@ -25,12 +26,12 @@ def display_random_button():
     if user_choice == 0:
         display_configuration_page()
     elif user_choice == 1:
-        json_utils.read_current_configuration()
+        config = json_utils.current_config_data
         user_choice = dialog.yesno("Kodi Episode Picker", "Would you like to choose media based on your mood today?")
         if user_choice:
             display_mood_page()
         else:
-            play_random_media()
+            play_random_media(config)
     else:
         display_profile_page()
         
@@ -39,8 +40,10 @@ def display_random_button():
 def display_profile_page():
     profile_names = json_utils.get_profile_names()
     profile_labels = [f"{profile}" for profile in profile_names]
-    profile_choice = dialog.select("Select Profile you want to use", profile_labels)
-    dialog.ok("Kodi Episode Picker", f"Your random play button is now configured to {profile_labels[profile_choice]}!")
+    profile_choice_num = [dialog.select("Select Profile you want to use", profile_labels)]
+    profile_choice = convert_indexes_to_strings(profile_choice_num, profile_labels)[0]
+    json_utils.update_current_config(profile_choice)
+    dialog.ok("Kodi Episode Picker", f"Your random play button is now configured to {profile_choice}!")
 
 
 def display_configuration_page():
@@ -78,6 +81,7 @@ def convert_indexes_to_strings(int_arr, string_arr):
     result_arr = []
     for index in int_arr:
         result_arr.append(string_arr[index])
+    return result_arr
 
 
 
@@ -92,9 +96,8 @@ def display_mood_page():
     dialog.ok("Kodi Episode Picker","This is where our mood page will go.")
 
 # This function will use the user configuration data arrays to randomly choose from media
-def play_random_media():
-    media_location = "C:/KodiMovies/Lady_Frankenstein.mp4"
-    xbmc.Player().play(media_location)
+def play_random_media(config):
+    dialog.ok("Kodi Episode Picker","This is where our app will randomly play a movie.")
 
 def create_profile_dict():
     pass
