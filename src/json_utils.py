@@ -1,7 +1,9 @@
 import json
+import xbmcvfs
 
-profiles_file_path = 'UserData/profiles.json'
-current_config_file_path = 'UserData/current_config.json'
+root_path = xbmcvfs.translatePath("special://xbmc/addons/script.episode.picker") + "\\UserData\\"
+profiles_file_path = root_path+'profiles.json'
+current_config_file_path = root_path+'current_config.json'
 
 profiles_file = open(profiles_file_path, "r+")
 current_config_file = open(current_config_file_path, "r+")
