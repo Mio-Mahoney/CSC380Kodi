@@ -1,36 +1,35 @@
 [
-    {
-      "name": "Profile 1",
-      "titles": ["Wolf of Wall Street", "Forrest Gump"],
-      "only_unwatched": true,
-      "only_watched": false,
-      "directors": ["Robert Zemeckis", "Michael Bay"],
-      "actors": ["Leonardo Dicaprio"],
-      "genres": ["comedy"],
-      "least_duration": 60.0,
-      "most_duration": 120.0,
-      "least_year": 1993,
-      "most_year": 2015,
-      "least_rating": 75,
-      "most_rating": 100,
-      "season_nums": [],
-      "episode_nums": []
-    },
-    {
-      "name": "Profile 2",
-      "titles": ["Saw", "The Shawshank Redemption"],
-      "only_unwatched": false,
-      "only_watched": false,
-      "directors": ["Martin Scorsese", "Quentin Tarantino"],
-      "actors": ["Denzel Washington", "Robert De Niro"],
-      "genres": ["Horror", "Action"],
-      "least_duration": 70.0,
-      "most_duration": 130.0,
-      "least_year": 2015,
-      "most_year": 2022,
-      "least_rating": 50,
-      "most_rating": 75,
-      "season_nums": [],
-      "episode_nums": []
-    }
-  ]
+  {
+    "name": "Harley",
+    "watch-status": 1,
+    "genres": ["Action", "Comedy", "Drama"],
+    "media-length": ["0-30", "31-60", "61-90"],
+    "release-year": [2000, 2022],
+    "ratings": [2, 3, 4],
+    "languages": ["English", "Spanish"],
+    "parental-advisory": ["PG-13", "R"],
+    "closed-captions": true
+  },
+  {
+    "name": "Mio",
+    "watch-status": 0,
+    "genres": ["Romance", "Fantasy"],
+    "media-length": ["31-60", "61-90", "91-120"],
+    "release-year": [2010, 2023],
+    "ratings": [3, 4, 5],
+    "languages": ["Japanese", "English"],
+    "parental-advisory": ["PG", "PG-13"],
+    "closed-captions": false
+  },
+  {
+    "name": "Will",
+    "watch-status": 2,
+    "genres": ["Science Fiction", "Thriller", "Horror"],
+    "media-length": ["61-90", "91-120", "121+"],
+    "release-year": [1990, 2010],
+    "ratings": [4, 5],
+    "languages": ["English", "French"],
+    "parental-advisory": ["R", "NC-17"],
+    "closed-captions": true
+  }
+]
