@@ -1,29 +1,11 @@
 {
-    "name": "Profile 2",
-    "titles": [
-        "Saw",
-        "The Shawshank Redemption"
-    ],
-    "only_unwatched": false,
-    "only_watched": false,
-    "directors": [
-        "Martin Scorsese",
-        "Quentin Tarantino"
-    ],
-    "actors": [
-        "Denzel Washington",
-        "Robert De Niro"
-    ],
-    "genres": [
-        "Horror",
-        "Action"
-    ],
-    "least_duration": 70.0,
-    "most_duration": 130.0,
-    "least_year": 2015,
-    "most_year": 2022,
-    "least_rating": 50,
-    "most_rating": 75,
-    "season_nums": [],
-    "episode_nums": []
+  "name": "Harley",
+  "watch-status": 1,
+  "genres": ["Action", "Comedy", "Drama"],
+  "media-length": ["0-30", "31-60", "61-90"],
+  "release-year": [2000, 2022],
+  "ratings": [2, 3, 4],
+  "languages": ["English", "Spanish"],
+  "parental-advisory": ["PG-13", "R"],
+  "closed-captions": true
 }
