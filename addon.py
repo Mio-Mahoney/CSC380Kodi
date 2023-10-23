@@ -57,7 +57,7 @@ def display_configuration_page():
     rating_labels = [f"{rating}" for rating in ratings]
 
     # Controls for user to input configurations
-    watched_unwatched_choice = dialog.yesnocustom("Kodi Episode Picker", "Do you want to see media you've already watched?", "Unwatched", "Watched", "Any")
+    watched_unwatched_choice = dialog.yesnocustom("Kodi Episode Picker", "Do you want to see media you've already watched?", "Unwatched", "Any", "Watched")
     genre_choice_nums = dialog.multiselect("Select Movie Genres", genre_labels)
     genre_choice = convert_indexes_to_strings(genre_choice_nums, genre_labels)
     length_choice_nums = dialog.multiselect("Select Movie Length", length_labels)
