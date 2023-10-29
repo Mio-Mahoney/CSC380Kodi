@@ -1,11 +1,11 @@
 {
-  "name": "Harley",
-  "watch-status": 1,
-  "genres": ["Action", "Comedy", "Drama"],
-  "media-length": ["0-30", "31-60", "61-90"],
-  "release-year": [2000, 2022],
-  "ratings": [2, 3, 4],
-  "languages": ["English", "Spanish"],
-  "parental-advisory": ["PG-13", "R"],
-  "closed-captions": true
+    "name": "",
+    "watch-status": -1,
+    "genres": [],
+    "media-length": [],
+    "release-year": [],
+    "ratings": [],
+    "languages": [],
+    "parental-advisory": [],
+    "closed-captions": false
 }
