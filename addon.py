@@ -189,17 +189,17 @@ def display_preset_save_page():
     global preset_name
     if preset_name == "":
         preset_name = dialog.input("What do you want the name of the preset to be?")
+        preset_names = json_utils.get_preset_names()
+        while preset_name in preset_names:
+            preset_name = dialog.input("That name already exists! What do you want the name of the preset to be?")
         preset_dict = create_preset_dict()
         json_utils.add_preset(preset_dict)
-        json_utils.update_current_config(preset_name)
-        reset_config()
-        dialog.ok("Kodi Episode Picker","Your preset is now ready to play random media!")
     else:
         preset_dict = create_preset_dict()
         json_utils.replace_preset(preset_dict)
-        json_utils.update_current_config(preset_name)
-        reset_config()
-        dialog.ok("Kodi Episode Picker","Your preset is now ready to play random media!")
+    json_utils.update_current_config(preset_name)
+    reset_config()
+    dialog.ok("Kodi Episode Picker","Your preset is now ready to play random media!")
 
 def display_preset_exit_page():
     user_choice = dialog.yesno("Kodi Episode Picker", "Do you want to stop configuring this preset? Your current configurations won't be saved.")
