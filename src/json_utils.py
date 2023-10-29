@@ -30,6 +30,7 @@ def get_preset(preset_name):
 
 #Adds a preset to presets.json
 def add_preset(preset_dict):
+    global presets_data, presets_file
     try:
         with open(presets_file_path, 'r') as json_file:
             presets_data = json.load(json_file)
@@ -38,6 +39,8 @@ def add_preset(preset_dict):
     presets_data.append(preset_dict)
     with open(presets_file_path, 'w') as json_file:
         json.dump(presets_data, json_file, indent=4)
+    presets_file = open(presets_file_path, "r+")
+    presets_data = json.load(open(presets_file_path, 'r'))
 
 #Deletes a preset from presets.json
 def delete_preset(config_name):
@@ -54,19 +57,30 @@ def replace_preset(preset_dict):
     global presets_data, presets_file
     delete_preset(preset_dict["name"])
     add_preset(preset_dict)
+    presets_file = open(presets_file_path, "r+")
+    presets_data = json.load(presets_file)
 
 #Gets the current config being used
 def get_current_config():
     global current_config_data
     return current_config_data
 
+def delete_current_config():
+    global current_config_data, current_config_file
+    with open(current_config_file_path, 'w') as json_file:
+        json.dump("", json_file, indent=4)
+    current_config_file = open(current_config_file_path, "r+")
+    current_config_data = json.load(current_config_file)
+        
+
+
 #Updates the current config being used and writes it to current_config.json
 def update_current_config(config_name):
-    global current_config_data, current_config_file
+    global presets_data, presets_file, current_config_data, current_config_file
     config_to_update = {}
     name_exists = False
     for preset in presets_data:
-        if preset.get("name") == config_name:
+        if preset["name"] == config_name:
             config_to_update = preset
             name_exists = True
             break
@@ -78,13 +92,6 @@ def update_current_config(config_name):
     current_config_file = open(current_config_file_path, "r+")
     current_config_data = json.load(current_config_file)
 
-#Deletes the current config in current_config.json
-def delete_current_config():
-    global current_config_data, current_config_file
-    config_to_update = {}
-    with open(current_config_file_path, 'w') as json_file:
-            json.dump(config_to_update, json_file, indent=4)
-
 # This function will obtain the names of all of the user presets from our UserData json files
 def get_preset_names():
     global presets_data
@@ -92,3 +99,4 @@ def get_preset_names():
     for item in presets_data:
         names.append(item["name"])
     return names
+    
