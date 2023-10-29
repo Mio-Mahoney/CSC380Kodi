@@ -84,7 +84,10 @@ def display_configuration_page():
         display_home_page()
 
 def display_mood_page():
-    dialog.ok("Kodi Episode Picker","This is where our mood page will go.")
+    moods = ["Happy", "Sad", "Scary", "Surprising", "Relaxing", "Uplifting"]
+    mood_labels = [f"{mood}" for mood in moods]
+    mood_choice_nums = dialog.multiselect("Select Movie Genres", mood_labels)
+    mood_choice = convert_indexes_to_strings(mood_choice_nums, mood_labels)
 
 # Displays a page where the user can choose if they want to see media they've already seen
 def display_watch_status_page():
