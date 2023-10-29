@@ -20,6 +20,8 @@ languages_choice = []
 parental_advisory_choice = []
 closed_captions_choice = False
 
+mood_choice = []
+
 # Displays main page where the user can choose to randomly select, configure, or choose preset
 def display_home_page():
     # user_choice is assigned based on the user's choice. 
@@ -129,7 +131,7 @@ def display_watch_status_page():
 # Displays a page where the user can choose what genres they want to watch
 def display_genre_page():
     global genre_choice
-    genres = ["Action", "Comedy", "Drama", "Horror", "Science Fiction"]
+    genres = ["Action", "Adventure" , "Animation" , "Comedy" , "Crime" , "Drama" , "Fantasy" , "Horror", "Mystery" , "Romance" , "Sci-Fi" , "Western" , "Thriller" , "Documentary" , "History" , "Sport"]
     genre_labels = [f"{genre}" for genre in genres]
     genre_choice_nums = dialog.multiselect("Select Movie Genres", genre_labels)
     genre_choice = convert_indexes_to_strings(genre_choice_nums, genre_labels)
@@ -158,7 +160,7 @@ def display_release_year_page():
 # Displays a page where the user can choose what ratings they would like to watch
 def display_ratings_page():
     global ratings_choice
-    ratings = ["0-1", "1-2", "2-3", "3-4", "4-5", "5-6", "6-7", "7-8", "8-9", "9-10"]
+    ratings = ["0-1", "1.1-2", "2.1-3", "3.1-4", "4.1-5", "5.1-6", "6.1-7", "7.1-8", "8.1-9", "9.1-10"]
     ratings_labels = [f"{rating}" for rating in ratings]
     ratings_choice_nums = dialog.multiselect("Select Movie Ratings", ratings_labels)
     ratings_choice = convert_indexes_to_strings(ratings_choice_nums, ratings_labels)
