@@ -121,6 +121,8 @@ def display_mood_page():
     moods = ["Happy", "Sad", "Scary", "Surprising", "Relaxing", "Uplifting"]
     mood_labels = [f"{mood}" for mood in moods]
     mood_choice_nums = dialog.multiselect("Select Movie Moods", mood_labels)
+    if mood_choice_nums == None:
+        display_home_page()
     mood_choice = convert_indexes_to_strings(mood_choice_nums, mood_labels)
 
 # Displays a page where the user can choose if they want to see media they've already seen
