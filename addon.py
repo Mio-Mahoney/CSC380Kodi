@@ -1,13 +1,14 @@
 import xbmc
 import xbmcaddon
 import xbmcgui
+import pyxbmct
 
 from src import json_utils
 
 addon = xbmcaddon.Addon()
 addonname = addon.getAddonInfo('name')
 dialog = xbmcgui.Dialog()
-window = xbmcgui.Window()
+window = pyxbmct.AddonDialogWindow('Kodi Episode Picker')
 
 # User configuration data that will be used throughout the program
 preset_name = ""
@@ -118,12 +119,33 @@ def display_streaming_service_page():
     media_name = dialog.input("What media do you want to find today?")
 
 def display_mood_page():
-    moods = ["Happy", "Sad", "Scary", "Surprising", "Relaxing", "Uplifting"]
-    mood_labels = [f"{mood}" for mood in moods]
-    mood_choice_nums = dialog.multiselect("Select Movie Moods", mood_labels)
-    if mood_choice_nums == None:
-        display_home_page()
-    mood_choice = convert_indexes_to_strings(mood_choice_nums, mood_labels)
+    window.setGeometry(400, 400, 11, 1)
+    happy_sad_slider = pyxbmct.addonwindow.Slider(textureback=None, texture=None, texturefocus=None, orientation=xbmcgui.HORIZONTAL)
+    happy_sad_label = pyxbmct.addonwindow.Label("   Happy                                            Sad   ", font='font13', textColor='0xFFFFFFFF', disabledColor='0xFFFF3300', alignment=0, hasPath=False, angle=0)
+    window.placeControl(happy_sad_slider, 0, 0, rowspan=1, columnspan=1)
+    window.placeControl(happy_sad_label, 1, 0, rowspan=1, columnspan=1)
+    scary_relaxed_slider = pyxbmct.addonwindow.Slider(textureback=None, texture=None, texturefocus=None, orientation=xbmcgui.HORIZONTAL)
+    scary_relaxed_label = pyxbmct.addonwindow.Label("   Scary                                         Relaxed   ", font='font13', textColor='0xFFFFFFFF', disabledColor='0xFFFF3300', alignment=0, hasPath=False, angle=0)
+    window.placeControl(scary_relaxed_slider, 2, 0, rowspan=1, columnspan=1)
+    window.placeControl(scary_relaxed_label, 3, 0, rowspan=1, columnspan=1)
+    romantic_platonic_slider = pyxbmct.addonwindow.Slider(textureback=None, texture=None, texturefocus=None, orientation=xbmcgui.HORIZONTAL)
+    romantic_platonic_label = pyxbmct.addonwindow.Label("   Romantic                                  Platonic   ", font='font13', textColor='0xFFFFFFFF', disabledColor='0xFFFF3300', alignment=0, hasPath=False, angle=0)
+    window.placeControl(romantic_platonic_slider, 4, 0, rowspan=1, columnspan=1)
+    window.placeControl(romantic_platonic_label, 5, 0, rowspan=1, columnspan=1)
+    mindless_thought_provoking_slider = pyxbmct.addonwindow.Slider(textureback=None, texture=None, texturefocus=None, orientation=xbmcgui.HORIZONTAL)
+    mindless_thought_provoking_label = pyxbmct.addonwindow.Label("   Mindless               Thought-provoking   ", font='font13', textColor='0xFFFFFFFF', disabledColor='0xFFFF3300', alignment=0, hasPath=False, angle=0)
+    window.placeControl(mindless_thought_provoking_slider, 6, 0, rowspan=1, columnspan=1)
+    window.placeControl(mindless_thought_provoking_label, 7, 0, rowspan=1, columnspan=1)
+    slow_paced_action_packed_slider = pyxbmct.addonwindow.Slider(textureback=None, texture=None, texturefocus=None, orientation=xbmcgui.HORIZONTAL)
+    slow_paced_action_packed_label = pyxbmct.addonwindow.Label("   Slow-paced                   Action-Packed   ", font='font13', textColor='0xFFFFFFFF', disabledColor='0xFFFF3300', alignment=0, hasPath=False, angle=0)
+    window.placeControl(slow_paced_action_packed_slider, 8, 0, rowspan=1, columnspan=1)
+    window.placeControl(slow_paced_action_packed_label, 9, 0, rowspan=1, columnspan=1)
+    submit_button = pyxbmct.addonwindow.Button('Submit', font='font14')
+    window.placeControl(submit_button, 10, 0, rowspan=1, columnspan=1)
+    window.connect(submit_button, lambda:
+        play_random_media_with_mood()
+    )
+    window.doModal()
 
 # Displays a page where the user can choose if they want to see media they've already seen
 def display_watch_status_page():
@@ -214,6 +236,10 @@ def display_preset_exit_page():
 
 # This function will use the user configuration data arrays to randomly choose from media
 def play_random_media():
+    dialog.ok("Kodi Episode Picker","This is where our app will randomly play a movie.")
+
+# This function will use the user configuration data arrays to randomly choose from media
+def play_random_media_with_mood():
     dialog.ok("Kodi Episode Picker","This is where our app will randomly play a movie.")
 
 # This function takes the indices that the multiselect controls produce and fills 
