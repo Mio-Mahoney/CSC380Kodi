@@ -3,7 +3,7 @@ import xbmcaddon
 import xbmcgui
 import pyxbmct
 
-from src import *
+from src import json_utils, providers
 
 addon = xbmcaddon.Addon()
 addonname = addon.getAddonInfo('name')
