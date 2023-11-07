@@ -143,6 +143,7 @@ def display_streaming_service_page():
             output_text = output_text + provider + ", "
         output_text = output_text + "and " + providers_with_media[-1]
     dialog.ok(addonname, output_text)
+    display_home_page()
 
 def display_mood_page():
     window.setGeometry(500, 500, 17, 1, padding=20)
