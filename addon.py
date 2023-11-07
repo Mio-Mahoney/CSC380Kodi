@@ -3,7 +3,7 @@ import xbmcaddon
 import xbmcgui
 import pyxbmct
 
-from src import json_utils
+from src import *
 
 addon = xbmcaddon.Addon()
 addonname = addon.getAddonInfo('name')
@@ -130,8 +130,17 @@ def display_configuration_page():
 
 def display_streaming_service_page():
     media_name = dialog.input("What media do you want to find today?")
-    if media_name == "":
-        display_home_page()
+    providers_with_media = providers.searchProvider(media_name)
+    output_text = "This media is available on "
+    if len(providers_with_media) == 0:
+        output_text = "This media couldn't be found!"
+    elif len(providers_with_media) == 1:
+        output_text = "This media is available on " + providers_with_media[0]
+    else:
+        for provider in providers_with_media[:-1]:
+            output_text = output_text + provider + ", "
+        output_text = output_text + ", and " + providers_with_media[-1]
+    dialog.ok(addonname, output_text)
 
 def display_mood_page():
     window.setGeometry(500, 500, 17, 1, padding=20)
