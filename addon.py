@@ -130,9 +130,9 @@ def display_configuration_page():
 
 def display_streaming_service_page():
     media_name = dialog.input("What media do you want to find today?")
-    providers_with_media = providers.searchProvider(media_name)
-    output_text = "This media is available on "
     try:
+        providers_with_media = providers.searchProvider(media_name)
+        output_text = "This media is available on "
         if len(providers_with_media) == 1:
             output_text = "This media is available on " + providers_with_media[0]
         elif len(providers_with_media) == 2:
@@ -140,8 +140,8 @@ def display_streaming_service_page():
         else:
             for provider in providers_with_media[:-1]:
                 output_text = output_text + provider + ", "
-        output_text = output_text + "and " + providers_with_media[-1]
-    except KeyError:
+            output_text = output_text + "and " + providers_with_media[-1]
+    except Exception:
         output_text = "This media couldn't be found! Please make sure capitalization and spelling is correct."
         
     dialog.ok(addonname, output_text)
