@@ -139,7 +139,7 @@ def display_streaming_service_page():
     else:
         for provider in providers_with_media[:-1]:
             output_text = output_text + provider + ", "
-        output_text = output_text + ", and " + providers_with_media[-1]
+        output_text = output_text + "and " + providers_with_media[-1]
     dialog.ok(addonname, output_text)
 
 def display_mood_page():
