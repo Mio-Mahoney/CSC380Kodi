@@ -136,6 +136,8 @@ def display_streaming_service_page():
         output_text = "This media couldn't be found!"
     elif len(providers_with_media) == 1:
         output_text = "This media is available on " + providers_with_media[0]
+    elif len(providers_with_media) == 2:
+        output_text = "This media is available on " + providers_with_media[0] + " and " + providers_with_media[1]
     else:
         for provider in providers_with_media[:-1]:
             output_text = output_text + provider + ", "
