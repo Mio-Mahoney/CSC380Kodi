@@ -142,7 +142,7 @@ def display_streaming_service_page():
                 output_text = output_text + provider + ", "
         output_text = output_text + "and " + providers_with_media[-1]
     except KeyError:
-        output_text = "This media couldn't be found! Please make sure capitalization and spelling is correct.
+        output_text = "This media couldn't be found! Please make sure capitalization and spelling is correct."
         
     dialog.ok(addonname, output_text)
     display_home_page()
