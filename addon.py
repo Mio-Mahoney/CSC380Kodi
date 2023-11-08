@@ -13,6 +13,7 @@ window = pyxbmct.AddonDialogWindow(addonname)
 # User configuration data that will be used throughout the program
 preset_name = ""
 watch_status_choice = -1
+media_type_choice = -1
 genre_choice = []
 length_choice = []
 release_year_choice = []
@@ -191,6 +192,11 @@ def display_watch_status_page():
     global watch_status_choice
     watch_status_choice = dialog.yesnocustom(addonname, "Do you want to see media you've already watched?", "Unwatched", "Any", "Watched")
 
+# Displays a page where the user can choose if they want to watch TV Shows or Movies
+def display_media_type_page():
+    global media_type_choice
+    media_type_choice = dialog.yesnocustom(addonname, "What type of media do you want to watch?", "Movies", "Any", "TV Shows")
+
 # Displays a page where the user can choose what genres they want to watch
 def display_genre_page():
     global genre_choice
@@ -316,6 +322,7 @@ def convert_indexes_to_strings(int_arr, string_arr):
 def reset_config():
     preset_name = ""
     watch_status_choice = -1
+    media_type_choice = -1
     genre_choice = []
     length_choice = []
     release_year_choice = []
@@ -325,9 +332,10 @@ def reset_config():
     closed_captions_choice = -1
 
 def load_preset(preset_dict):
-    global preset_name, watch_status_choice, genre_choice, length_choice, release_year_choice, ratings_choice, languages_choice, parental_advisory_choice, closed_captions_choice
+    global preset_name, watch_status_choice, media_type_choice, genre_choice, length_choice, release_year_choice, ratings_choice, languages_choice, parental_advisory_choice, closed_captions_choice
     preset_name = preset_dict["name"]
     watch_status_choice = preset_dict["watch-status"]
+    media_type_choice = preset_dict["media-type"]
     genre_choice = preset_dict["genres"]
     length_choice = preset_dict["media-length"]
     release_year_choice = preset_dict["release-year"]
@@ -341,6 +349,7 @@ def create_preset_dict():
     return {
         "name": preset_name,
         "watch-status": watch_status_choice,
+        "media-type": media_type_choice,
         "genres": genre_choice,
         "media-length": length_choice,
         "release-year": release_year_choice,
