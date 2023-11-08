@@ -72,8 +72,6 @@ def delete_current_config():
     current_config_file = open(current_config_file_path, "r+")
     current_config_data = json.load(current_config_file)
         
-
-
 #Updates the current config being used and writes it to current_config.json
 def update_current_config(config_name):
     global presets_data, presets_file, current_config_data, current_config_file
